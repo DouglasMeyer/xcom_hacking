@@ -1,7 +1,12 @@
 module BinaryDataTestMacros
   def should_have_binary(name, *values)
-    should "have binary_data #{name}" do
-      assert_equal Array.new(values).flatten, subject.binary_data[name]
+    type = values.pop if values.last.is_a?(Symbol)
+    type ||= :number
+    should "have binary_data for #{name}" do
+      values.flatten.each_with_index do |value, index|
+        expected = {:name => name, :index => index, :type => type}
+        assert_equal expected, subject.binary_data[value]
+      end
     end
   end
 end

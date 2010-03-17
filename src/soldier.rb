@@ -6,12 +6,12 @@ class Soldier
     rank 2 # also a good way to check for death
     location 2
     craft 2
-    unknown ; unknown
+    skip 2
     completed_missions 2
     kills 2
     wound_time 2
-    unknown ; unknown
-    name 25
+    skip 2
+    name 25, :string
     transfer_destination
     time_units
     health
@@ -36,7 +36,7 @@ class Soldier
     armour_type
     last_month_psi
     in_psi_training
-    unknown
+    skip
     sex
     appearance
   end

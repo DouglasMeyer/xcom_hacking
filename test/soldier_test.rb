@@ -12,7 +12,7 @@ class SoldierTest < Test::Unit::TestCase
     should_have_binary :kills, 10,11 # number
     should_have_binary :wound_time, 12,13 # number
 #NOTE: don't set past 36, it will mess-up the display
-    should_have_binary :name, (16..40).to_a # string
+    should_have_binary :name, (16..40).to_a, :string
 ## Transfer destination for existing soldiers, not new ones
     should_have_binary :transfer_destination, 41 # number
     should_have_binary :time_units, 42 # number
