@@ -34,10 +34,11 @@ class ActsAsBinaryTest < Test::Unit::TestCase
           name 10, :string
           skip 4
           sex
+          list 5, :array
         end
       end
       @class.new.tap do |instance|
-        instance.data = [ 1,2, 3, (97..106).to_a, 4,5,6,7, 1 ].flatten
+        instance.data = [ 1,2, 3, (97..106).to_a, 4,5,6,7, 1, 8,9,10,11,12 ].flatten
       end
     end
 
@@ -45,6 +46,7 @@ class ActsAsBinaryTest < Test::Unit::TestCase
       assert_equal 1+2*256,      subject.instance_eval{ @rank }
       assert_equal "abcdefghij", subject.instance_eval{ @name }
       assert_equal 1,            subject.instance_eval{ @sex  }
+      assert_equal (8..12).to_a, subject.instance_eval{ @list }
     end
 
     should "keep track of skips" do

@@ -16,19 +16,18 @@ module ActsAsBinary
       def initialize(&block)
         instance_eval(&block)
       end
-      def skip(size=1)
-        @offset += size
-      end
       def method_missing(name, *args)
         @data ||= []
         @offset ||= 0
         size = args[0] || 1
-        size.times do |index|
-          @data[@offset+index] = {
-            :name => name,
-            :index => index,
-            :type => args[1] || :number
-          }
+        unless name == :skip
+          size.times do |index|
+            @data[@offset+index] = {
+              :name => name,
+              :index => index,
+              :type => args[1] || :number
+            }
+          end
         end
         @offset += size
       end
@@ -57,12 +56,30 @@ module ActsAsBinary
       when :string
         value = instance_variable_get(instance_variable) || ''
         value += data.chr
+      when :array
+        value = instance_variable_get(instance_variable) || []
+        value << data
       else # :number
         value = instance_variable_get(instance_variable) || 0
         value += data*256**attributes[:index]
       end
       instance_variable_set("@#{attributes[:name]}", value)
     end
+  end
+
+  def inspect
+    instance_variable_inspect = (instance_variables.sort - ['@skips']).map{|iv|
+      "#{iv}=#{instance_variable_get(iv).inspect}"
+    }.join(', ')
+    if @skips
+      skips_inspect = @skips.sort.map{ |key, value|
+        out = "#{key}=>#{value}"
+        out += "(#{value.chr})" if (32..126).include?(value)
+        out
+      }.join(', ')
+      instance_variable_inspect += ", @skips={#{skips_inspect}}"
+    end
+    "#<#{self.class.name}: #{instance_variable_inspect}>"
   end
 
 end
