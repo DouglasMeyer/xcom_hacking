@@ -25,6 +25,20 @@ class BaseTest < Test::Unit::TestCase
     should_have_binary :small_rocket, 152, 153
     should_have_binary :grenade, 164, 165
     should_have_binary :smoke_grenade, 166, 167
+    should_have_binary :empty, 288
+  end
+
+  context "Base.exist?" do
+    subject { Base.new }
+
+    should "be true if empty is 0" do
+      subject.instance_variable_set('@empty', 0)
+      assert subject.exist?
+    end
+    should "be false if empty is 1" do
+      subject.instance_variable_set('@empty', 1)
+      assert !subject.exist?
+    end
   end
 
 end

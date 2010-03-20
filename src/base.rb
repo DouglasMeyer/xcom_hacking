@@ -37,6 +37,12 @@ class Base
     skip 10
     grenade 2
     smoke_grenade 2
-    skip 124
+    skip 120
+    empty
+    skip 3
+  end
+
+  def exist?
+    @empty == 0
   end
 end

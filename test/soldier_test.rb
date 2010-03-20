@@ -43,17 +43,17 @@ class SoldierTest < Test::Unit::TestCase
     should_have_binary :appearance, 67 # number => method
   end
 
-  context "Soldier#dead?" do
+  context "Soldier#exist?" do
     subject { Soldier.new }
 
-    should "be false if rank isn't 0xFFFF" do
+    should "be true if rank isn't 0xFFFF" do
       subject.instance_variable_set('@rank', 0)
-      assert !subject.dead?
+      assert subject.exist?
     end
 
-    should "be true if rank is 0xFFFF" do
+    should "be false if rank is 0xFFFF" do
       subject.instance_variable_set('@rank', 0xFFFF)
-      assert subject.dead?
+      assert !subject.exist?
     end
   end
 

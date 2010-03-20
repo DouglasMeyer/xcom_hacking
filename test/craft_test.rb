@@ -18,4 +18,17 @@ class CraftTest < Test::Unit::TestCase
     should_have_binary :hc_he_ammo, 55
     should_have_binary :grenade, 68
   end
+
+  context "Craft.exist?" do
+    subject { Craft.new }
+
+    should "be false if @type_id is 255" do
+      subject.instance_variable_set('@type_id', 255)
+      assert !subject.exist?
+    end
+    should "be true if @type_id isn't 255" do
+      subject.instance_variable_set('@type_id', 0)
+      assert subject.exist?
+    end
+  end
 end

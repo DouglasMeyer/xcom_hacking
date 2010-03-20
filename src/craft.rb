@@ -22,4 +22,9 @@ class Craft
     grenade
     skip 35
   end
+
+  def exist?
+    @type_id != 255
+  end
+
 end

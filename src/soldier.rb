@@ -41,7 +41,7 @@ class Soldier
     appearance
   end
 
-  def dead?
-    @rank == 0xFFFF
+  def exist?
+    @rank != 0xFFFF
   end
 end

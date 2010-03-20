@@ -73,7 +73,7 @@ module ActsAsBinary
     }.join(', ')
     if @skips
       skips_inspect = @skips.sort.map{ |key, value|
-        out = "#{key}=>#{value}"
+        out = "#{key}=>#{value.inspect}"
         out += "(#{value.chr})" if (32..126).include?(value)
         out
       }.join(', ')

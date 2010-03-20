@@ -28,4 +28,9 @@ class Transfer
     quantity
     skip
   end
+
+  def exist?
+    @quantity != 0
+  end
+
 end
