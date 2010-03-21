@@ -6,6 +6,8 @@ class LocTest < Test::Unit::TestCase
 
   context "Loc.binary_data" do
     should_have_binary :type_id, 0
+    should_have_binary :x, 2
+    should_have_binary :y, 4
   end
 
   context "Loc#exist?" do

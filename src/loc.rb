@@ -4,7 +4,15 @@ class Loc
   include ActsAsBinary
   binary_data do
     type_id
-    skip 19
+      # 1 = ufo?
+      # 3 = base
+      # 2 = craft
+      # 7 = way-point
+    skip
+    x
+    skip
+    y
+    skip 15
   end
 
   def exist?
