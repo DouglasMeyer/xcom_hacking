@@ -10,7 +10,9 @@ class Craft
     bay1_ammo
     skip 3
     bay2_ammo
-    skip 42
+    skip 17
+    fuel
+    skip 24
     pistol
     pistol_clip
     rifle

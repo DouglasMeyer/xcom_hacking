@@ -8,6 +8,7 @@ class CraftTest < Test::Unit::TestCase
     should_have_binary :type_id, 0
     should_have_binary :bay1_ammo, 2
     should_have_binary :bay2_ammo, 6
+    should_have_binary :fuel, 24
 #NOTE: these are probably similar to base
     should_have_binary :pistol, 49
     should_have_binary :pistol_clip, 50

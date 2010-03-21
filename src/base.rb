@@ -13,7 +13,8 @@ class Base
       # 4 = Small Radar
       # 7 = General Stores
       # [[16,17],[18,19]] = Hanger
-    skip 38
+    facilitie_build_time 36, :array
+    skip 2
     stingray_launcher 2
     avalanche_launcher 2
     cannon 2

@@ -7,6 +7,7 @@ class BaseTest < Test::Unit::TestCase
   context "Base.binary_data" do
     should_have_binary :name, (0..12).to_a, :string
     should_have_binary :facilitie_ids, (22..57).to_a, :array
+    should_have_binary :facilitie_build_time, (58..93).to_a, :array
     should_have_binary :stingray_launcher, 96, 97
     should_have_binary :avalanche_launcher, 98, 99
     should_have_binary :cannon, 100, 101
